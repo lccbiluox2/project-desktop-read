@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import cn.biluo.daoRu.DaoRuView;
 import cn.biluo.myhead.LoginView;
 
 public class MainView extends JFrame {
@@ -116,13 +117,20 @@ public class MainView extends JFrame {
 		         g.drawImage(img.getImage(),0,0,null);
 		          }
 		       }; 
-		
+       JPanel daoRu =new JPanel(){
+		     public void paintComponent(Graphics g) {
+		         super.paintComponent(g);
+		         ImageIcon img = new ImageIcon("images\\daoru.png");
+		         g.drawImage(img.getImage(),0,0,null);
+		          }
+		       }; 
 		
 		head.setBackground(Color.blue);
 		zifu.setBackground(Color.red);
 		zaixian.setBackground(Color.pink);
 		shujia.setBackground(Color.black);
-		ReadHistory.setBackground(Color.white);
+		ReadHistory.setBackground(Color.orange);
+		daoRu.setBackground(Color.BLUE);
 		
 		//设置布局后，只能这样设置大小
 		head.setPreferredSize(new Dimension(100, 100));//关键代码,设置JPanel的大小 
@@ -130,6 +138,7 @@ public class MainView extends JFrame {
 		zaixian.setPreferredSize(new Dimension(100, 100));//关键代码,设置JPanel的大小 
 		shujia.setPreferredSize(new Dimension(100, 100));//关键代码,设置JPanel的大小 
 		ReadHistory.setPreferredSize(new Dimension(100, 100));//关键代码,设置JPanel的大小 
+		daoRu.setPreferredSize(new Dimension(100, 100));//关键代码,设置JPanel的大小 
 
 	
 		
@@ -138,7 +147,10 @@ public class MainView extends JFrame {
 		panel.add(zaixian);
 		panel.add(shujia);
 		panel.add(ReadHistory);
+		panel.add(daoRu);
 		
+		//为各个加入点击事件
+		/*****登录点击事件******/
 		head.addMouseListener(new MouseListener() {  
 
 			public void mouseReleased(MouseEvent e) {
@@ -159,8 +171,93 @@ public class MainView extends JFrame {
 				LoginView login = new LoginView();
 			}
 		});
+		
+		/*******在线书城事件*******/
+		zaixian.addMouseListener(new MouseListener() {  
 
+			public void mouseReleased(MouseEvent e) {
+			}
 
+			public void mousePressed(MouseEvent e) {
+			}
+
+			public void mouseExited(MouseEvent e) {
+			}
+
+			public void mouseEntered(MouseEvent e) {
+			}
+
+			public void mouseClicked(MouseEvent e) {
+				// 一个弹框，此处不细说其语法
+				JOptionPane.showMessageDialog(null, "在线阅读", "注意", 0, null);
+			}
+		});
+
+		
+		/******书架事件********/
+		shujia.addMouseListener(new MouseListener() {  
+
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			public void mousePressed(MouseEvent e) {
+			}
+
+			public void mouseExited(MouseEvent e) {
+			}
+
+			public void mouseEntered(MouseEvent e) {
+			}
+
+			public void mouseClicked(MouseEvent e) {
+				// 一个弹框，此处不细说其语法
+				JOptionPane.showMessageDialog(null, "查看书架", "注意", 0, null);
+			}
+		});
+		
+	
+		/******阅读历史事件********/
+		ReadHistory.addMouseListener(new MouseListener() {  
+
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			public void mousePressed(MouseEvent e) {
+			}
+
+			public void mouseExited(MouseEvent e) {
+			}
+
+			public void mouseEntered(MouseEvent e) {
+			}
+
+			public void mouseClicked(MouseEvent e) {
+				// 一个弹框，此处不细说其语法
+				JOptionPane.showMessageDialog(null, "阅读历史", "注意", 0, null);
+			}
+		});
+		
+		/******导入事件********/
+		daoRu.addMouseListener(new MouseListener() {  
+
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			public void mousePressed(MouseEvent e) {
+			}
+
+			public void mouseExited(MouseEvent e) {
+			}
+
+			public void mouseEntered(MouseEvent e) {
+			}
+
+			public void mouseClicked(MouseEvent e) {
+				// 一个弹框，此处不细说其语法
+				DaoRuView daoru = new DaoRuView();
+				daoru.go();
+			}
+		});
 		/*********************************************************/
 		//下面的内容界面
 		JPanel panelContent = new JPanel();
@@ -172,6 +269,7 @@ public class MainView extends JFrame {
 		contentPane.add(panelContent);
 		panelContent.setLayout(null);
 		
+		
 		/*********************************************************/
 		//左导航
 		JPanel panelContentLeftDaohang = new JPanel();
@@ -182,6 +280,7 @@ public class MainView extends JFrame {
 		panelContentLeftDaohang.setBounds(0, 0, ContentLeftChangdu, ContentLeftGao);
 		panelContent.add(panelContentLeftDaohang);
 		panelContentLeftDaohang.setLayout(null);
+		
 		
 		
 	}
