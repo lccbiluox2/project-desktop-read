@@ -20,6 +20,7 @@ import cn.biluo.bookself.BookSelfView;
 import cn.biluo.history.HistoryView;
 import cn.biluo.main.daoru.DaoRuView;
 import cn.biluo.myhead.LoginView;
+import cn.biluo.web.main.myBrowser;
 
 public class MainView extends JFrame {
 
@@ -191,7 +192,8 @@ public class MainView extends JFrame {
 
 			public void mouseClicked(MouseEvent e) {
 				// 一个弹框，此处不细说其语法
-				//JOptionPane.showMessageDialog(null, "在线阅读", "注意", 0, null);
+				JOptionPane.showMessageDialog(null, "在线阅读", "注意", 0, null);
+				myBrowser aa =new myBrowser();
 			}
 		});
 
