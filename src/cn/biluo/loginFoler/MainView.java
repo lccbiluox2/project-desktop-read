@@ -5,16 +5,20 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class LoginView extends JFrame {
+import cn.biluo.myhead.LoginView;
+
+public class MainView extends JFrame {
 
 	/**
      * 
@@ -32,7 +36,7 @@ public class LoginView extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginView frame = new LoginView();
+					MainView frame = new MainView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +48,7 @@ public class LoginView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LoginView() {
+	public MainView() {
 		
 		/*
 		 * 总界面
@@ -55,8 +59,6 @@ public class LoginView extends JFrame {
 		setBounds(300, 100, weight, height);// setBounds(窗口左边距，右边距，窗口长度，窗口宽度)
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(2, 5, 5, 5));
-		Color bg = new Color(255, 255, 255);
-		contentPane.setBackground(bg);
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
@@ -71,7 +73,7 @@ public class LoginView extends JFrame {
 		         g.drawImage(img.getImage(),0,0,null);
 		          }
 		       }; 
-		panel.setBackground(Color.blue);
+		
 		// 根据窗口的大小自动改变大小
 		int daohangheight = 100;
 		panel.setBounds(0, 0, weight, daohangheight);
@@ -79,13 +81,42 @@ public class LoginView extends JFrame {
 		panel.setLayout(new FlowLayout(FlowLayout.LEFT,0,0));
 		
 		
-		JPanel head = new JPanel();
-		JPanel zifu = new JPanel();
-		JPanel zaixian = new JPanel();
-		JPanel shujia = new JPanel();
-		JPanel ReadHistory =new JPanel() ;
+		JPanel head = new JPanel(){
+		     public void paintComponent(Graphics g) {
+		         super.paintComponent(g);
+		         ImageIcon img = new ImageIcon("images\\head.jpg");
+		         g.drawImage(img.getImage(),0,0,null);
+		          }
+		       }; 
+		JPanel zifu = new JPanel(){
+		     public void paintComponent(Graphics g) {
+		         super.paintComponent(g);
+		         ImageIcon img = new ImageIcon("images\\click.png");
+		         g.drawImage(img.getImage(),0,0,null);
+		          }
+		       }; 
+		JPanel zaixian = new JPanel(){
+		     public void paintComponent(Graphics g) {
+		         super.paintComponent(g);
+		         ImageIcon img = new ImageIcon("images\\zaixian.png");
+		         g.drawImage(img.getImage(),0,0,null);
+		          }
+		       }; 
+		JPanel shujia = new JPanel(){
+		     public void paintComponent(Graphics g) {
+		         super.paintComponent(g);
+		         ImageIcon img = new ImageIcon("images\\book.png");
+		         g.drawImage(img.getImage(),0,0,null);
+		          }
+		       }; 
+		JPanel ReadHistory =new JPanel(){
+		     public void paintComponent(Graphics g) {
+		         super.paintComponent(g);
+		         ImageIcon img = new ImageIcon("images\\readhistory.png");
+		         g.drawImage(img.getImage(),0,0,null);
+		          }
+		       }; 
 		
-		head.setSize(100, 100);
 		
 		head.setBackground(Color.blue);
 		zifu.setBackground(Color.red);
@@ -100,6 +131,7 @@ public class LoginView extends JFrame {
 		shujia.setPreferredSize(new Dimension(100, 100));//关键代码,设置JPanel的大小 
 		ReadHistory.setPreferredSize(new Dimension(100, 100));//关键代码,设置JPanel的大小 
 
+	
 		
 		panel.add(head);
 		panel.add(zifu);
@@ -107,8 +139,27 @@ public class LoginView extends JFrame {
 		panel.add(shujia);
 		panel.add(ReadHistory);
 		
-		     
-		  
+		head.addMouseListener(new MouseListener() {  
+
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			public void mousePressed(MouseEvent e) {
+			}
+
+			public void mouseExited(MouseEvent e) {
+			}
+
+			public void mouseEntered(MouseEvent e) {
+			}
+
+			public void mouseClicked(MouseEvent e) {
+				// 一个弹框，此处不细说其语法
+				JOptionPane.showMessageDialog(null, "内部类事件监听监听", "注意", 0, null);
+				LoginView login = new LoginView();
+			}
+		});
+
 
 		/*********************************************************/
 		//下面的内容界面
